@@ -1,0 +1,62 @@
+@startuml
+
+package "class object package" {
+    abstract abstract
+    abstract class "abstract class"
+    annotation annotation
+    circle circle
+    () circle_short_form
+    class class
+    diamond diamond
+    <> diamond_short_form
+    entity entity
+    enum enum
+    interface interface
+}
+
+package "class relation package" #00fe00{
+    class01 <|-- class02
+    class03 "1" *-- "many" class04: > contains
+    class05 .. class06
+    class07 -- class08
+    class09 "many" o-- "1" class10: < contains
+    class11 o.. class12
+}
+
+package "package style" {
+    package foo1 <<node>> {
+        class class_p1
+    }
+    package foo2 <<Rectangle>> {
+        class class_p2
+    }
+    package foo3 <<Folder>> {
+        class class_p3
+    }
+    package foo4 <<Frame>> {
+        class class_p4
+    }
+    package foo5 <<Cloud>> {
+        class class_p5
+    }
+    package foo6 <<Database>> {
+        class class_p6
+    }
+    bar ()-- class_p6
+    foo2 *-- foo3
+}
+skinparam classAttributeIconSize 0
+class class01 <<general>>{
+    -String data
+    +void methods()
+    -void method1()
+    #void method2()
+    ~void method3()
+}
+note right: MyNote
+
+note "MyFirstNote" as N1
+N1 -- class02
+note bottom of class02: bottom note
+
+@enduml
