@@ -95,7 +95,22 @@ def object_getattribute(obj, name):
 
 `super(A, obj).m` =  searches `obj.__class__.__mro__` for the base class `B` immediately following `A` and then returns `B.__dict__['m'].__get__(obj, A)`. If not a descriptor, `m` is returned unchanged.
 
-## References
+# Descriptor Protocol
+
+```
+__get__(self, obj, type=None) -> value
+
+__set__(self, obj, value) -> None
+
+__delete__(self, obj) -> None
+```
+
+`non-data descriptor`: 只有`__get__`方法
+
+`data descriptor`:  非`non-data descriptor`的，比如可以只有`__set__`, `__delete__`
+
+
+# References
 
 [1]: https://docs.python.org/3.11/howto/descriptor.html	"Overview of descriptor invovation"
 
