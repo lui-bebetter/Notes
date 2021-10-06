@@ -2,7 +2,12 @@
 
                                                                           pickle marshal json
 
-## pickle
+## ***PICKLE*** [1][]
+
+- *binary serialization format*
+- *Python-specific*
+- *almost all Python types*
+- *no safety guarantee*
 
 ### What can be pickled and unpickled?
 * None, True, and False
@@ -90,7 +95,11 @@ class TextReader:
         self.fh = fh                 # save the file object
 ```
 
-## json
+## ***JSON*** [2][]
+
+- *text serialization format*
+- *only built-in types, no custom classes*
+- *safety guarantee*
 
 ### conversion table
 
@@ -212,3 +221,9 @@ Decimal('1.1')
 If a string is returned, it names a global variable whose contents are pickled as normal. The string returned by __reduce__() should be the object’s local name relative to its module; the pickle module searches the module namespace to determine the object’s module.
 
 When a tuple is returned, it must be between two and five elements long. Optional elements can either be omitted, or None can be provided as their value. The contents of this tuple are pickled as normal and used to reconstruct the object at unpickling time
+
+# References
+
+[1]: https://docs.python.org/3.9/library/pickle.html?highlight=cpickle#module-pickle	"pickle"
+[2]: https://www.json.org/json-en.html	"json"
+

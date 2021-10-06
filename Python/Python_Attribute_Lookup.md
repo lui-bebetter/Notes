@@ -6,17 +6,17 @@
 
 - Non-Magic Method
 
-    `obj_or_type.name or getattr(obj_or_type, name)` 实际做的是[1][]：
+    `obj_or_cls.name or getattr(obj_or_cls, name)` 实际做的是[1][]：
 
     ```
     try:
-        return type(obj_or_type).__getattribute__(obj_or_type, name)
+        return obj_or_cls.__getattribute__(name)
     except AttributeError:
-        if not hasattr(type(obj_or_type), '__getattr__'):
+        if not hasattr(obj_or_cls, '__getattr__'):
             raise
-    return type(obj_or_type).__getattr__(obj_or_type, name)
+    return obj_or_cls.__getattr__(name)
     ```
-    属性查找顺序定义在`obj_or_type.__getattribute__`中
+    属性查找顺序定义在`type(obj_or_cls).__getattribute__`中
 
 ## Instance
 `type(instance).__getattribute__`继承于`object.__getattribute__`

@@ -1,21 +1,54 @@
 # ContextManager
 
 ## context manager protocol
-* `__enter__(context_mgr)`
-* `__exit__(context_mgr, type, value, traceback)`
+* `__enter__(self)` 
 
-## syntax
+* `__exit__(self, type, value, traceback)`
+
+  `: return` `bool` 异常是否继续往上传
+
+## The `with` statement
+
 ```
-witch EXPR as VAR:
-	BLOCK
+with EXPRESSION as TARGET:
+    SUITE
 ```
-## semantics
+
+is semantically equivalent to:
+
 ```
-__enter__(args)
+manager = (EXPRESSION)
+enter = type(manager).__enter__
+exit = type(manager).__exit__
+value = enter(manager)
+hit_except = False
+
 try:
-	body
+    TARGET = value
+    SUITE
+except:
+    hit_except = True
+    if not exit(manager, *sys.exc_info()):
+        raise
 finally:
-	__exit__(args) # (None, None, None) if success
+    if not hit_except:
+        exit(manager, None, None, None)
+```
+***本质是：保证只要`__enter__`成功执行，`__exit__`中的cleanup就一定会执行，但suite中触发的异常还是需要手动处理***
+
+With more than one item, the context managers are processed as if multiple [`with`](https://docs.python.org/3.10/reference/compound_stmts.html#with) statements were nested:
+
+```
+with A() as a, B() as b:
+    SUITE
+```
+
+is semantically equivalent to:
+
+```
+with A() as a:
+    with B() as b:
+        SUITE
 ```
 ## python lib
 ```
