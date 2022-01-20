@@ -59,8 +59,21 @@
    `-r --revision` 基于远程仓库版本
 
    `-v --verbose` 所有文件的详细信息
+  
+- #### `svn diff`
 
-   
+   - `svn diff [PATH...]` 输出本地修改
+   - `svn diff -c m [TARGET...]` 输出版本m的改动
+   - `svn diff -r N[:M] [TARGET[@REV]...]` 两个版本之间的改动
+   - `svn diff -r N[:M] --old=OLDTARGET --new=NEWTARGET` old@N 到new@M之间的差别
 
-   
+- #### `svn revert PATH...`
+
+   undo, unschedule and resolve conflict
+
+   `--depth ARG`
+
+    
+
+    
 
