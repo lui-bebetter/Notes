@@ -98,6 +98,11 @@
   
     默认设置文件更新时间为当前时间，设置本选项后设置为diff header中指定更新时间
   
+- # 一般使用场景
+  
+  - `diff -Naur old new`
+  - `patch -p1 -i patch`
+  
 - # References
 
   [1]: https://www.gnu.org/software/diffutils/manual/html_node/index.html#SEC_Contents	"Comparing and Merging Files"
