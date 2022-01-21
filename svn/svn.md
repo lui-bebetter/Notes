@@ -73,7 +73,13 @@
 
    `--depth ARG`
 
-    
+- #### `svn resolve PATH...`
 
+   `--accept ARG` base, working, mine-conflict, theirs-conflict, mine-full, theirs-full
+
+- ## References
+
+  [1]: https://svnbook.red-bean.com/en/1.7/index.html	"SVN Documentation"
+  
     
 
