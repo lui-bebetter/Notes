@@ -4,6 +4,12 @@
 
    远程仓库目录详情，若TARGET为本地目录，则自动转化为对应的URL
 
+- #### `svn cat TARGET[@REV]...`
+
+   获取文件内容
+
+   `-r --revision ARG`
+
 - #### `svn info [TARGET[@REV]...]`  
 
   本地`working copy`(path)、远程仓库目录信息(URL)
@@ -76,6 +82,87 @@
 - #### `svn resolve PATH...`
 
    `--accept ARG` base, working, mine-conflict, theirs-conflict, mine-full, theirs-full
+
+- #### `svn log `
+
+   输出文件有变化的log信息
+
+   - `svn log [PATH][@REV]`
+
+      范围BASE:1
+
+   - `svn log URL[@REV] [PATH...]`
+
+      范围HEAD:1
+
+      `-r --revision ARG`
+
+      `-c --change ARG`
+
+      `-v --verbose` 提交的具体文件信息
+
+      `--diff` 显示diff
+
+      `-l --limit ARG` log数
+
+      `--stop-on-copy` 不显示copy history
+
+      `--search PATTERN` match log
+
+    `svn log -r BASE:HEAD foo`显示最新修改
+
+- #### `svn blame [-r M:N] TARGET[@REV]...`
+
+-  #### `svn propset`
+
+   - `svn propset PROPNAME PROPVAL PATH...`
+
+      设置文件或目录的属性
+
+   - `svn propset --revprop -r REV PROPNAME PROPVAL [TARGET]`
+
+      设置版本的属性，TARGET指定仓库路径
+
+      `-F --file` 属性值从文件读取
+
+- #### `svn propedit`
+
+   - `svn propedit PROPNAME TARGET...`
+
+      修改本地或远程文件的属性
+
+   - `svn propedit --revprop -r REV PROPNAME [TARGET]`
+
+      修改版本的属性
+   
+- #### `svn proplist`
+
+   - `svn proplist [TARGET[@REV]...]`
+
+      列举文件属性
+
+   - `svn proplist --revprop -r REV [TARGET]`
+
+      列举版本属性
+
+      `-v --verbose` 输出属性值
+
+- #### `svn propget`
+
+   - `svn propget PROPNAME [TARGET[@REV]...]`
+   - `svn propget PROPNAME --revprop -r REV [TARGET]`
+   
+- #### `svn propdel`
+
+   - `svn propdel PROPNAME [PATH...]`
+   - `svn propdel PROPNAME --revprop -r REV [TARGET]`
+
+- #### `svn patch PATCHFILE [PATH]`
+
+   - `--dry-run`
+   - `--strip ARG` strip path
+   - `--reverse-diff`
+   - `--ignore-whitespace`	
 
 - ## References
 
